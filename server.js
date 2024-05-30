@@ -67,6 +67,8 @@ app.use(helmet({
   xssFilter: true,
 }));
 
+
+
 app.use(bodyParser.json());
 
 const staticPath = path.join(__dirname, 'src', 'webComAdmin', 'dist');

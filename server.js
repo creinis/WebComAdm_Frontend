@@ -23,7 +23,9 @@ connectDB();
 // Configuração de CORS
 const allowedOrigins = [
   'http://localhost:5174',
+  'http://localhost:5173',
   'http://localhost:5500',
+  'http://localhost:5000',
   'https://web-com-client.vercel.app',
   'https://web-com-adm.vercel.app'
 ];
@@ -48,7 +50,7 @@ app.use(helmet({
       scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://apis.google.com"],
       styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
       imgSrc: ["'self'", "data:"],
-      connectSrc: ["'self'", "https://web-com-client.vercel.app", "https://web-com-adm.vercel.app", "http://localhost:5174", "http://localhost:5000"],
+      connectSrc: ["'self'", "https://web-com-client.vercel.app", "https://web-com-adm.vercel.app", "http://localhost:5174", "http://localhost:5000", "http://localhost:5173", "http://localhost:5500"],
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
       objectSrc: ["'none'"],
       upgradeInsecureRequests: [],

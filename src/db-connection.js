@@ -9,7 +9,7 @@ const connectDB = async () => {
   try {
     const mongoURI = process.env.DB;
     if (!mongoURI) {
-      throw new Error("MONGODB_URI is not defined in the .env file");
+      throw new Error("DB is not defined in the .env file");
     }
     await mongoose.connect(mongoURI, {});
     console.log("=====>>>> App is connected to the DB.");

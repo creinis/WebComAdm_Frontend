@@ -12,21 +12,23 @@ const AdminLogin = () => {
     e.preventDefault();
     setLoading(true);
     setError('');
-
+  
     console.log('Attempting login with', { username, password });
-
+  
+    const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+  
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch(`${apiUrl}/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email: username, password }),
       });
-
+  
       const data = await response.json();
       console.log('Login response:', data);
-
+  
       if (response.ok) {
         login(data.token);
       } else {
@@ -36,9 +38,11 @@ const AdminLogin = () => {
       console.error('Login error:', error);
       setError('Login failed');
     }
-
+  
     setLoading(false);
   };
+  
+  
 
   return (
     <div>

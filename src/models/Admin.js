@@ -24,6 +24,7 @@ const AdminSchema = new mongoose.Schema({
   },
 });
 
+// Middleware para hash da senha antes de salvar
 AdminSchema.pre('save', async function (next) {
   if (!this.isModified('password')) {
     return next();
@@ -33,10 +34,10 @@ AdminSchema.pre('save', async function (next) {
   next();
 });
 
-AdminSchema.methods.comparePassword = async function (password) {
+// Método para comparar senhas
+AdminSchema.methods.comparePassword = function (password) {
   return bcrypt.compare(password, this.password);
 };
 
 const Admin = mongoose.model('Admin', AdminSchema);
-
 export default Admin;

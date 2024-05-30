@@ -17,6 +17,29 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
+// Conectar ao banco de dados
+connectDB();
+
+// Configuração de CORS
+const allowedOrigins = [
+  'http://localhost:5174',
+  'http://localhost:5500',
+  'https://web-com-client.vercel.app',
+  'https://web-com-adm.vercel.app'
+];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+}));
+
 // Helmet configuração
 app.use(helmet({
   contentSecurityPolicy: {
@@ -24,8 +47,8 @@ app.use(helmet({
       defaultSrc: ["'self'"],
       scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://apis.google.com"],
       styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-      imgSrc: ["'self'", "data:", "https://sentry.io"],
-      connectSrc: ["'self'", "https://sentry.io", "https://o4507142041436160.ingest.de.sentry.io", "http://localhost:5174", "http://localhost:5000"],
+      imgSrc: ["'self'", "data:"],
+      connectSrc: ["'self'", "https://web-com-client.vercel.app", "https://web-com-adm.vercel.app", "http://localhost:5174", "http://localhost:5000"],
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
       objectSrc: ["'none'"],
       upgradeInsecureRequests: [],
@@ -40,13 +63,8 @@ app.use(helmet({
   permittedCrossDomainPolicies: { permittedPolicies: 'none' },
   referrerPolicy: { policy: 'no-referrer' },
   xssFilter: true,
-} ));
+}));
 
-connectDB();
-
-// Middleware
-app.use(cors());
-app.use(helmet());
 app.use(bodyParser.json());
 
 const staticPath = path.join(__dirname, 'src', 'webComAdmin', 'dist');
@@ -72,5 +90,3 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`ADM Server is running on port ${PORT}`);
 });
-
-

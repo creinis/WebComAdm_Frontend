@@ -15,10 +15,10 @@ const AdminLogin = () => {
   
     console.log('Attempting login with', { username, password });
   
-    const apiUrl = 'https://web-com-admin-backend.vercel.app';
+    /* const apiUrl = 'https://web-com-admin-backend.vercel.app'; */
   
     try {
-      const response = await fetch(`${apiUrl}/api/auth/login`, {
+      const response = await fetch(`https://web-com-admin-backend.vercel.app/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

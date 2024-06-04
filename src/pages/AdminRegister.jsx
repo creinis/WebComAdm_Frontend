@@ -22,7 +22,7 @@ const AdminRegister = () => {
     setError('');
     
     try {
-      const response = await axios.post('https://web-com-admin-backend.vercel.app/api/admins/register', { adminName, email, password, role });
+      const response = await axios.post('http://web-com-admin-backend.vercel.app/api/admins/register', { adminName, email, password, role });
       console.log('Registration response:', response.data);
       alert('Novo administrador registrado com sucesso!');
       setAdminName('');

@@ -13,8 +13,8 @@ const PurchaseDetails = () => {
   useEffect(() => {
     const fetchDetails = async () => {
       try {
-        const purchaseResponse = await axios.get(`http://web-com-admin-backend.vercel.app/api/admins/purchases/${id}`);
-        const subscriptionResponse = await axios.get('http://web-com-admin-backend.vercel.app/api/admins/subscription-status');
+        const purchaseResponse = await axios.get(`https://web-com-admin-backend.vercel.app/api/admins/purchases/${id}`);
+        const subscriptionResponse = await axios.get('https://web-com-admin-backend.vercel.app/api/admins/subscription-status');
 
         const matchingSubscription = subscriptionResponse.data.find(sub => sub.purchase_id.toString() === purchaseResponse.data._id.toString());
 
@@ -24,7 +24,7 @@ const PurchaseDetails = () => {
         });
 
         if (matchingSubscription) {
-          const paymentResponse = await axios.get(`http://web-com-admin-backend.vercel.app/api/admins/payments/${matchingSubscription.payment_id}`);
+          const paymentResponse = await axios.get(`https://web-com-admin-backend.vercel.app/api/admins/payments/${matchingSubscription.payment_id}`);
           setPayment(paymentResponse.data);
         }
 

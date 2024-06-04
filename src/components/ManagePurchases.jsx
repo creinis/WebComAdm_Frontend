@@ -11,8 +11,8 @@ const ManagePurchases = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const purchasesResponse = await axios.get('http://web-com-admin-backend.vercel.app/api/admins/purchases');
-        const subscriptionResponse = await axios.get('http://web-com-admin-backend.vercel.app/api/admins/subscription-status');
+        const purchasesResponse = await axios.get('https://web-com-admin-backend.vercel.app/api/admins/purchases');
+        const subscriptionResponse = await axios.get('https://web-com-admin-backend.vercel.app/api/admins/subscription-status');
 
         // Combine data from both responses
         const combinedData = purchasesResponse.data.map(purchase => {

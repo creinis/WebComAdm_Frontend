@@ -8,14 +8,19 @@ const router = Router();
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
+  console.log('Provided password:', password); // Adicionado log para depuração
+  
   try {
     const admin = await Admin.findOne({ email });
     if (!admin) {
+      console.log('Admin not found:', email); // Log para depuração
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    const isMatch = await bcrypt.compare(password, admin.password);
+    console.log('Stored hashed password:', admin.password); // Adicionado log para depuração
+    const isMatch = await admin.comparePassword(password); // Usamos o método comparePassword definido no modelo Admin
     if (!isMatch) {
+      console.log('Password does not match for:', email); // Log para depuração
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
@@ -23,6 +28,7 @@ router.post('/login', async (req, res) => {
       expiresIn: '1h',
     });
 
+    console.log('Login successful for:', email); // Log para depuração
     res.json({ token });
   } catch (error) {
     console.error('Login error:', error);

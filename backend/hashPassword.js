@@ -1,6 +1,6 @@
 import { hash as _hash } from 'bcrypt';
 
-const password = 'masterpassword';
+const password = 'novomasterpassword';
 const saltRounds = 10;
 
 _hash(password, saltRounds, (err, hash) => {

@@ -104,7 +104,7 @@ const ManageCrew = () => {
   useEffect(() => {
     const fetchAdmins = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/admins/admins');
+        const response = await axios.get('https://web-com-admin-backend.vercel.app/api/admins/admins');
         const sortedAdmins = response.data.sort((a, b) => a.adminName.localeCompare(b.adminName));
         setAdmins(sortedAdmins);
         setLoading(false);
@@ -135,7 +135,7 @@ const ManageCrew = () => {
 
   const handleEditAdmin = async (updatedAdminData) => {
     try {
-      await axios.put(`http://localhost:5000/api/admins/admins/${selectedAdmin._id}`, updatedAdminData);
+      await axios.put(`https://web-com-admin-backend.vercel.app/api/admins/admins/${selectedAdmin._id}`, updatedAdminData);
       const updatedAdmins = admins.map(admin =>
         admin._id === selectedAdmin._id ? { ...admin, ...updatedAdminData } : admin
       );
@@ -149,7 +149,7 @@ const ManageCrew = () => {
 
   const handleDeleteAdmin = async () => {
     try {
-      await axios.delete(`http://localhost:5000/api/admins/admins/${selectedAdmin._id}`);
+      await axios.delete(`https://web-com-admin-backend.vercel.app/api/admins/admins/${selectedAdmin._id}`);
       const updatedAdmins = admins.filter(admin => admin._id !== selectedAdmin._id);
       setAdmins(updatedAdmins);
       console.log('Admin excluído com sucesso. Novos admins:', updatedAdmins);

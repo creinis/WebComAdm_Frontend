@@ -67,9 +67,9 @@ const PurchaseDetails = () => {
           {payment.paymentMethod === 'Cartão de Crédito' && (
             <>
               <p><strong>Credit Card Brand:</strong> {payment.creditCardBrand}</p>
-              <p><strong>Credit Card Number:</strong> {payment.creditCardNumber}</p>
+              <p><strong>Credit Card Number:</strong> **** **** **** {payment.creditCardNumber.slice(-4)}</p>
               <p><strong>Credit Card Expiry:</strong> {payment.creditCardExpiry}</p>
-              <p><strong>Credit Card CVS:</strong> {payment.creditCardCVS}</p>
+              <p><strong>Credit Card CVS:</strong> *** </p>
               <p><strong>Client Name:</strong> {payment.clientName}</p>
               <p><strong>Client CPF:</strong> {payment.clienteCpf}</p>
               <p><strong>Terms Accepted:</strong> {payment.creditCardTermsAccepted ? 'Sim' : 'Não'}</p>
@@ -78,14 +78,14 @@ const PurchaseDetails = () => {
           {payment.paymentMethod === 'PayPall' && (
             <>
               <p><strong>PayPal Email:</strong> {payment.payPallEmail}</p>
-              <p><strong>PayPal Password:</strong> {payment.payPallPassword}</p>
+              <p><strong>PayPal Password:</strong> ************ </p>
               <p><strong>Terms Accepted:</strong> {payment.payPallTermsAccepted ? 'Sim' : 'Não'}</p>
             </>
           )}
           {payment.paymentMethod === 'Pague com Amazon' && (
             <>
               <p><strong>Amazon Email:</strong> {payment.amazonEmail}</p>
-              <p><strong>Amazon Password:</strong> {payment.amazonPassword}</p>
+              <p><strong>Amazon Password:</strong>  ************ </p>
               <p><strong>Terms Accepted:</strong> {payment.amazonTermsAccepted ? 'Sim' : 'Não'}</p>
             </>
           )}

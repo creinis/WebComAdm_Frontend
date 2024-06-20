@@ -62,7 +62,7 @@ const ManagePurchases = () => {
               <th className="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Campanha</th>
               <th className="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">User Name</th>
               <th className="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Email</th>
-              <th className="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">Pagto</th>
+              
               <th className="px-2 py-3 text-center text-xs font-medium uppercase tracking-wider">...</th>
             </tr>
           </thead>
@@ -84,7 +84,7 @@ const ManagePurchases = () => {
                 <td className="px-2 py-4 text-sm text-center whitespace-nowrap">{purchase.mostPopular ? 'Sim' : 'Não'}</td>
                 <td className="px-2 py-4 text-sm whitespace-nowrap">{purchase.userName}</td>
                 <td className="px-2 py-4 text-sm whitespace-nowrap">{purchase.email}</td>
-                <td className="px-2 py-4 text-sm whitespace-nowrap">{purchase.paymentMethod}</td>
+                
                 <td className="px-2 py-4 text-sm text-center whitespace-nowrap">
                   <Link to={`${purchase._id}`} className="text-blue-500 hover:text-blue-700">Detalhes</Link>
                 </td>
